@@ -58,9 +58,11 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
 
     return (
         <div className="navbar-container">
-            <div className="navbar-logo">
-                <img className="navbar-logo-img" src={navbarLogo} alt="Logo" />
-            </div>
+            <Link to="/" className="nav-li">
+                <div className="navbar-logo">
+                    <img className="navbar-logo-img" src={navbarLogo} alt="Logo" />
+                </div>
+            </Link>
             <div className="search-bar">
                 <input
                     className="search-bar-input"
