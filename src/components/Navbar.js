@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ResturantCard } from "../components/Card";
 import { Audio } from "react-loader-spinner";
+import Error from "./Error";
+import { Link, useOutletContext } from "react-router-dom";
 
 const navbarLogo = "https://foodvillabolton.com/inc/img/wholesaler/22790.png";
 const API_URL = "https://dummyjson.com/recipes";
@@ -29,7 +31,8 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
             setError(false);
         }
         catch (err) {
-            setError(err)
+            setError(err);
+            setLoader(false);
         }
     }
 
@@ -69,10 +72,16 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
                 <button className="search-btn" onClick={handleClick}>Search</button>
             </div>
             <ul className="nav-ul">
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Cart</li>
-                <li>Contact Us</li>
+                <Link to="/" className="nav-li">
+                    <li>Home</li>
+                </Link>
+                <Link to="/about" className="nav-li">
+                    <li>About Us</li>
+                </Link>
+                <li className="nav-li">Cart</li>
+                <Link to="/contact" className="nav-li">
+                    <li >Contact Us</li>
+                </Link>
             </ul>
 
             {user ? <button className="search-btn" onClick={handleLogout}>Logout</button> :
@@ -82,11 +91,15 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
     )
 }
 
-export const MainComponent = ({ list, loader, error }) => {
+export const MainComponent = ({ error }) => {
+
+    const { list, loader } = useOutletContext();
+
+    console.log(list)
 
     return (
         <>
-            {error && <h1 className="error-text">NO DATA FOUND...</h1>}
+            {error && <Error />}
 
             <div className="card-main-wrapper">
                 {loader ? <Audio
