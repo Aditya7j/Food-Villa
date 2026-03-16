@@ -3,13 +3,13 @@ import { ResturantCard } from "../components/Card";
 import { Audio } from "react-loader-spinner";
 
 const navbarLogo = "https://foodvillabolton.com/inc/img/wholesaler/22790.png";
-
+const API_URL = "https://dummyjson.com/recipes";
 
 export const Navbar = ({ list, setList, setLoader, setError }) => {
     const [search, setSearch] = useState('');
     const [user, setUser] = useState(false);
 
-   
+
     const handleLogout = () => {
         setUser(false)
     }
@@ -22,7 +22,7 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
     const getResturant = async function () {
         try {
             setLoader(true);
-            const data = await fetch("https://dummyjson.com/recipes");
+            const data = await fetch(API_URL);
             const jsonData = await data?.json();
             setList(jsonData?.recipes);
             setLoader(false);
@@ -56,7 +56,7 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
     return (
         <div className="navbar-container">
             <div className="navbar-logo">
-                <img className="navbar-logo-img" src={navbarLogo} alt="err" />
+                <img className="navbar-logo-img" src={navbarLogo} alt="Logo" />
             </div>
             <div className="search-bar">
                 <input
