@@ -4,12 +4,13 @@ import { MainComponent, Navbar } from "./src/components/Navbar";
 import { Footer } from "./src/components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./src/components/Error";
-import Contact from "./src/components/Contact";
 import CardDetails from "./src/components/CardDetails";
 import { Audio } from "react-loader-spinner";
 
 
 const About = lazy(() => import("./src/components/About"));
+const Contact = lazy(() => import("./src/components/Contact"));
+
 
 const AppLayout = () => {
     const [list, setList] = useState([]);
@@ -54,7 +55,18 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/contact",
-                element: <Contact />
+                element: <Suspense fallback={
+                    <div className="audio-wrapper">
+                        <Audio
+                            height="55vh"
+                            width="80"
+                            color="#4fa94d"
+                            ariaLabel="audio-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="wrapper-class"
+                            visible={true}
+                        />
+                    </div>}><Contact /></Suspense>
             },
             {
                 path: "/resturant/recipes/:id",
