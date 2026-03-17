@@ -80,7 +80,7 @@ const CardDetails = () => {
                 </div>
 
                 <div className="recipe-rating">
-                    <span>⭐ {recipeData.rating} ({recipeData.reviewCount} reviews)</span>
+                    <span>{recipeData.rating} ⭐  ({recipeData.reviewCount} reviews)</span>
                 </div>
 
                 <div className="recipe-meal-type">
