@@ -3,23 +3,19 @@ import { ResturantCard } from "../components/Card";
 import { Audio } from "react-loader-spinner";
 import Error from "./Error";
 import { Link, useOutletContext } from "react-router-dom";
-
-const navbarLogo = "https://foodvillabolton.com/inc/img/wholesaler/22790.png";
-const API_URL = "https://dummyjson.com/recipes";
+import { navbarLogo, API_URL } from "../../constants";
+import useInternetTrack from "../../utils/useIntrnetTrack";
 
 export const Navbar = ({ list, setList, setLoader, setError }) => {
     const [search, setSearch] = useState('');
     const [user, setUser] = useState(false);
 
-
     const handleLogout = () => {
         setUser(false)
     }
-
     const handleLogin = () => {
         setUser(true);
     }
-
 
     const getResturant = async function () {
         try {
@@ -88,21 +84,25 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
 
             {user ? <button className="search-btn" onClick={handleLogout}>Logout</button> :
                 <button className="search-btn" onClick={handleLogin}>Login</button>}
-
         </div>
     )
 }
 
 export const MainComponent = ({ error }) => {
-
     const { list, loader } = useOutletContext();
+    const tracking = useInternetTrack();
 
-    console.log(list)
+    if (!tracking) {
+        return (
+            <div className="track-wrapper">
+                <h1 className="track-text">Check Your Internet Connection 📡🚫</h1>
+            </div>
+        )
+    }
 
     return (
         <>
             {error && <Error />}
-
             <div className="card-main-wrapper">
                 {loader ? <Audio
                     height="55vh"

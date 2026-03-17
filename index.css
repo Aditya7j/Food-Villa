@@ -296,3 +296,32 @@
             color: #111;
 }
   
+/* track css */
+
+.track-wrapper {
+  width: 100%;
+  height: 75vh;
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-text {
+  font-size: 40px;
+  font-weight: 600;
+  color: #3863c0;
+  margin: 0;
+}
+
+.audio-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 75vh;
+  padding: 20px;
+}
