@@ -325,3 +325,54 @@
   height: 75vh;
   padding: 20px;
 }
+
+/* section wrapper css */
+.section-wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.section-wrapper h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.section-wrapper button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #1a73e8;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.section-wrapper button:hover {
+  opacity: 0.85;
+}
+
+/* Animated content wrapper */
+.section-content {
+  overflow: hidden;
+  max-height: 0; 
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.section-content.show {
+  max-height: 500px;      
+  padding-top: 10px;
+}
+
+.section-wrapper h3 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}

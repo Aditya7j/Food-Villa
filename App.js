@@ -7,9 +7,9 @@ import Error from "./src/components/Error";
 import CardDetails from "./src/components/CardDetails";
 import { Audio } from "react-loader-spinner";
 
-
 const About = lazy(() => import("./src/components/About"));
 const Contact = lazy(() => import("./src/components/Contact"));
+const Instamart = lazy(() => import("./src/components/Instamart"));
 
 
 const AppLayout = () => {
@@ -67,6 +67,21 @@ const appRouter = createBrowserRouter([
                             visible={true}
                         />
                     </div>}><Contact /></Suspense>
+            },
+            {
+                path: "/instamart",
+                element: <Suspense fallback={
+                    <div className="audio-wrapper">
+                        <Audio
+                            height="55vh"
+                            width="80"
+                            color="#4fa94d"
+                            ariaLabel="audio-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="wrapper-class"
+                            visible={true}
+                        />
+                    </div>}><Instamart /></Suspense>
             },
             {
                 path: "/resturant/recipes/:id",

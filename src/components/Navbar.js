@@ -76,9 +76,11 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
                 <Link to="/about" className="nav-li">
                     <li>About Us</li>
                 </Link>
-                <li className="nav-li">Cart</li>
                 <Link to="/contact" className="nav-li">
                     <li >Contact Us</li>
+                </Link>
+                <Link to="/instamart" className="nav-li">
+                    <li >Instamart</li>
                 </Link>
             </ul>
 
