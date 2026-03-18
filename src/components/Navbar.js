@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ResturantCard } from "../components/Card";
 import { Audio } from "react-loader-spinner";
 import Error from "./Error";
 import { Link, useOutletContext } from "react-router-dom";
 import { navbarLogo, API_URL } from "../../constants";
 import useInternetTrack from "../../utils/useIntrnetTrack";
+import UserContext from "../../utils/userContext";
 
 export const Navbar = ({ list, setList, setLoader, setError }) => {
     const [search, setSearch] = useState('');
     const [user, setUser] = useState(false);
+
+    const userInfo = useContext(UserContext);
+
+
 
     const handleLogout = () => {
         setUser(false)
@@ -86,6 +91,9 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
 
             {user ? <button className="search-btn" onClick={handleLogout}>Logout</button> :
                 <button className="search-btn" onClick={handleLogin}>Login</button>}
+
+            <h6>{userInfo.user.name}</h6>
+
         </div>
     )
 }

@@ -17,6 +17,7 @@ const AppLayout = () => {
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState('');
 
+
     return (
         <>
             <Navbar list={list} setList={setList} setLoader={setLoader} setError={setError} />

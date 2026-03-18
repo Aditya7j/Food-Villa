@@ -1,4 +1,3 @@
-
 const About = () => {
     return (
         <section className="about-section">
@@ -9,6 +8,7 @@ const About = () => {
                     Our team combines expertise, innovation, and a passion for excellence to create products and services
                     that stand out in the industry.
                 </p>
+
                 <ul className="about-values">
                     <li><strong>Integrity:</strong> We uphold the highest standards in every project.</li>
                     <li><strong>Innovation:</strong> We embrace creativity and cutting-edge solutions.</li>
