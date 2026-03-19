@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./src/components/Error";
 import CardDetails from "./src/components/CardDetails";
 import { Audio } from "react-loader-spinner";
+import UserContext from "./utils/userContext";
 
 const About = lazy(() => import("./src/components/About"));
 const Contact = lazy(() => import("./src/components/Contact"));
@@ -16,14 +17,18 @@ const AppLayout = () => {
     const [list, setList] = useState([]);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState('');
+    const [user,setUser] = useState({
+        name:"A.k Singh",
+        email:"a@a.gmail.com"
+    })
 
 
     return (
-        <>
+        <UserContext.Provider value={{user:user,setUser:setUser}}>
             <Navbar list={list} setList={setList} setLoader={setLoader} setError={setError} />
             <Outlet context={{ list, loader, error }} />
             <Footer />
-        </>
+        </UserContext.Provider>
     )
 }
 
