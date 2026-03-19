@@ -9,18 +9,7 @@ import UserContext from "../../utils/userContext";
 
 export const Navbar = ({ list, setList, setLoader, setError }) => {
     const [search, setSearch] = useState('');
-    const [user, setUser] = useState(false);
-
     const userInfo = useContext(UserContext);
-
-
-
-    const handleLogout = () => {
-        setUser(false)
-    }
-    const handleLogin = () => {
-        setUser(true);
-    }
 
     const getResturant = async function () {
         try {
@@ -87,10 +76,9 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
                 <Link to="/instamart" className="nav-li">
                     <li >Instamart</li>
                 </Link>
-            </ul>
+                <li className="nav-li">Cart</li>
 
-            {user ? <button className="search-btn" onClick={handleLogout}>Logout</button> :
-                <button className="search-btn" onClick={handleLogin}>Login</button>}
+            </ul>
 
             <h6>{userInfo.user.name}</h6>
 
