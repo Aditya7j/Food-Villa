@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../css/cardDetails.css";
 import { Audio } from "react-loader-spinner";
+import { addItem } from "../../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const CardDetails = () => {
     const { id } = useParams();
     const [recipeData, setRecipeData] = useState(null);
+
+    const dispatch = useDispatch();
 
     const API_URL = `https://dummyjson.com/recipes/${id}`;
 
@@ -22,6 +26,13 @@ const CardDetails = () => {
     useEffect(() => {
         getDetails();
     }, [id]);
+
+
+    const handleAddItem = (item) => {
+        dispatch(addItem(item))
+        console.log("item",item)
+    }
+
 
     if (!recipeData) {
         return (
@@ -87,6 +98,9 @@ const CardDetails = () => {
                     <strong>Meal Type:</strong> {recipeData.mealType.join(", ")}
                 </div>
             </div>
+
+            <button className="search-btn" style={{ width: "150px" }}
+                onClick={() => handleAddItem(recipeData)}>Add Items</button>
         </div>
     );
 };

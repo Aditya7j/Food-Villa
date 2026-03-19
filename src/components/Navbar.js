@@ -6,10 +6,13 @@ import { Link, useOutletContext } from "react-router-dom";
 import { navbarLogo, API_URL } from "../../constants";
 import useInternetTrack from "../../utils/useIntrnetTrack";
 import UserContext from "../../utils/userContext";
+import { useSelector } from "react-redux";
 
 export const Navbar = ({ list, setList, setLoader, setError }) => {
     const [search, setSearch] = useState('');
     const userInfo = useContext(UserContext);
+
+    const cartItems = useSelector(store => store.cart.items);
 
     const getResturant = async function () {
         try {
@@ -76,8 +79,9 @@ export const Navbar = ({ list, setList, setLoader, setError }) => {
                 <Link to="/instamart" className="nav-li">
                     <li >Instamart</li>
                 </Link>
-                <li className="nav-li">Cart</li>
-
+                <Link to="/cart" className="nav-li">
+                    <li >Cart - {cartItems.length} items</li>
+                </Link>
             </ul>
 
             <h6>{userInfo.user.name}</h6>
